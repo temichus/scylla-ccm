@@ -543,6 +543,9 @@ class ScyllaNode(Node):
         if wait_other_notice:
             marks = [(node, node.mark_log()) for node in
                      list(self.cluster.nodes.values()) if node.is_live()]
+            mess = [node.name for node, _ in marks]
+            mess = f"NODES in MARKS: {mess}"
+            self.debug(mess)
 
         self.mark = self.mark_log()
 
